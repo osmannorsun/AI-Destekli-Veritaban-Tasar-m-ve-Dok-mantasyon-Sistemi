@@ -1,1 +1,1 @@
-# AI-Destekli-Veritaban-Tasar-m-ve-Dok-mantasyon-Sistemi
+# AI-Destekli-Veritabani Tasarim ve Dokumantasyon Sistemi
