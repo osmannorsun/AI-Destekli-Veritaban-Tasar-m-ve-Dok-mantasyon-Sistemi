@@ -1,0 +1,1 @@
+# AI-Destekli-Veritaban-Tasar-m-ve-Dok-mantasyon-Sistemi
