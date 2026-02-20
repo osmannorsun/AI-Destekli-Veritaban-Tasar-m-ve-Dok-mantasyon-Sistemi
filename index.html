@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Projects</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+
+  <div class="topbar">
+    <h1>Projects</h1>
+    <a class="linkbtn" href="/">Refresh</a>
+  </div>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="messages">
+        {% for cat, msg in messages %}
+          <div class="msg {{cat}}">{{ msg }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <div class="card">
+    <h2>+ New Project</h2>
+    <form method="post" action="/projects/create">
+      <div class="row">
+        <input name="title" placeholder="Title (Proje Başlığını Girin)" required>
+        <input name="primary_entity" placeholder="Primary Entity (örn: Tickets)" required>
+      </div>
+
+      <div class="row">
+        <input name="domain" placeholder="Domain (örn: teams, players, matches)" required>
+      </div>
+
+      <div class="row">
+        <input name="constraints_text" placeholder="Constraint / Rule">
+      </div>
+
+      <div class="row">
+        <input name="advanced_feature" placeholder="Advanced Feature">
+      </div>
+
+      <div class="row">
+        <input name="security_access" placeholder="Security / Access Control">
+      </div>
+
+      <div class="row">
+        <input name="reporting_requirement" placeholder="Reporting Requirement">
+      </div>
+
+      <div class="row">
+        <input name="common_tasks" placeholder="Common Tasks">
+      </div>
+<div class="row">
+  <button type="submit" formaction="/projects/create">Create</button>
+
+  <button type="submit" formaction="/projects/create_and_generate">
+    Create + Hepsini Üret (DOCX)
+  </button>
+</div>
+
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Project List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Domain</th>
+          <th>Created</th>
+          <th>Open</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in rows %}
+        <tr>
+          <td>{{ r.id }}</td>
+          <td>{{ r.title }}</td>
+          <td>{{ r.domain }}</td>
+          <td>{{ r.created_at }}</td>
+          <td><a href="/project/{{ r.id }}">Open</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>

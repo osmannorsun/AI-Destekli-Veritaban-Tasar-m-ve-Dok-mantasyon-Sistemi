@@ -1,0 +1,138 @@
+/* GENEL */
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #0f1115;
+  color: #eaeaea;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* KART */
+.card {
+  background: #171a21;
+  border: 1px solid #252a36;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+/* BAŞLIKLAR */
+h1 {
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+/* FORM */
+.row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #2b3040;
+  background: #0f1115;
+  color: #eaeaea;
+}
+
+/* BUTON */
+button {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid #2b3040;
+  background: #232a3a;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2f3750;
+}
+
+/* TABLO */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #252a36;
+  text-align: left;
+}
+
+a {
+  color: #8ab4ff;
+  text-decoration: none;
+}
+
+/* MESAJLAR */
+.messages {
+  margin-bottom: 15px;
+}
+
+.msg {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.msg.ok {
+  background: #12321f;
+}
+
+.msg.error {
+  background: #3a1616;
+}
+
+.btngrid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.actionbtn{
+  width: 100%;
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 1px solid #2b3040;
+  background: #232a3a;
+  color: #eaeaea;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+}
+
+.actionbtn:hover{
+  background: #2f3750;
+}
+.pre-wrap {
+  max-width: 100%;
+  overflow-x: auto;   /* ✅ yatay scroll */
+  overflow-y: hidden;
+}
+
+.pre {
+  white-space: pre;  
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+               Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 14px;
+  background: #0f1115;
+  border: 1px solid #252a36;
+  border-radius: 12px;
+  min-width: max-content;
+}

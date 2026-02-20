@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ p.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+
+  <div class="topbar">
+    <h1>{{ p.title }}</h1>
+    <a class="linkbtn" href="/">← Projects</a>
+  </div>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="messages">
+        {% for cat, msg in messages %}
+          <div class="msg {{cat}}">{{ msg }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <div class="card">
+    <h2>Project Info</h2>
+    <table class="kv">
+      <tr><th>Domain</th><td>{{ p.domain }}</td></tr>
+      <tr><th>Primary Entity</th><td>{{ p.primary_entity }}</td></tr>
+      <tr><th>Constraint / Rule</th><td>{{ p.constraints_text }}</td></tr>
+      <tr><th>Advanced Feature</th><td>{{ p.advanced_feature }}</td></tr>
+      <tr><th>Security / Access Control</th><td>{{ p.security_access }}</td></tr>
+      <tr><th>Reporting Requirement</th><td>{{ p.reporting_requirement }}</td></tr>
+      <tr><th>Common Tasks</th><td>{{ p.common_tasks }}</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+   <div class="card">
+  <h2>Actions</h2>
+
+  <div class="btngrid">
+    <form method="post" action="/project/{{p.id}}/run/business_rules" target="_blank">
+      <button class="actionbtn" type="submit">Business Rules</button>
+    </form>
+
+    <form method="post" action="/project/{{p.id}}/run/er_tables" target="_blank">
+      <button class="actionbtn" type="submit">ER Tables</button>
+    </form>
+
+    <form method="post" action="/project/{{p.id}}/run/missing_rules" target="_blank">
+      <button class="actionbtn" type="submit">Detect Missing Rules</button>
+    </form>
+
+    <form method="post" action="/project/{{p.id}}/run/normalization" target="_blank">
+      <button class="actionbtn" type="submit">Normalization</button>
+    </form>
+
+    <form method="post" action="/project/{{p.id}}/run/er_plantuml" target="_blank">
+      <button class="actionbtn" type="submit">ER Diagram (PlantUML)</button>
+    </form>
+
+    <form method="post" action="/project/{{p.id}}/run/sql_script" target="_blank">
+      <button class="actionbtn" type="submit">SQL Script</button>
+    </form>
+
+    <form method="post" action="/project/{{p.id}}/run/report" target="_blank">
+      <button class="actionbtn" type="submit">Report Queries</button>
+    </form>
+  </div>
+
+  <p class="hint">Her buton ayrı sekmede açılır. Sonuç sayfasında “Geri dön” ile buraya dönersin.</p>
+</div>
+
+  </div>
+
+  <div class="card">
+    <h2>Latest Outputs</h2>
+
+    {% for key, item in latest.items() %}
+      <div class="outputbox">
+        <div class="outputhead">
+          <strong>{{ key }}</strong>
+          {% if item %}
+            <span class="hint">{{ item.created_at }} • {{ item.model }}</span>
+          {% endif %}
+        </div>
+
+        {% if item %}
+          <pre class="pre">{{ item.output_text }}</pre>
+        {% else %}
+          <div class="hint">Henüz üretilmedi.</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ p.title }} • {{ action_key }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+
+  <div class="topbar">
+    <div>
+      <h1>{{ p.title }}</h1>
+      <div class="hint">Action: <strong>{{ action_key }}</strong></div>
+    </div>
+
+    <a class="linkbtn" href="/project/{{ p.id }}">← Geri Dön(Butonlar)</a>
+  </div>
+
+  {% if error %}
+    <div class="card">
+      <h2>Hata</h2>
+      <div class="pre-wrap">
+        <pre class="pre mono">{{ error }}</pre>
+      </div>
+    </div>
+  {% else %}
+
+    {% if action_key == "er_plantuml" and img_url %}
+      <div class="card">
+        <h2>ER Diagram (Render)</h2>
+        <img
+          src="{{ img_url }}"
+          alt="PlantUML Diagram"
+          style="max-width:100%; border-radius:12px;"
+        >
+        <p class="hint">Görsel açılmazsa PlantUML server erişimi yoktur.</p>
+      </div>
+    {% endif %}
+
+    <div class="card">
+      <h2>Output</h2>
+      <div class="pre-wrap">
+        <pre class="pre mono">{{ output_text }}</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Prompt (Debug)</h2>
+      <div class="pre-wrap">
+        <pre class="pre mono">{{ prompt_text }}</pre>
+      </div>
+      <div class="hint">Model: {{ model }}</div>
+    </div>
+  {% endif %}
+
+</div>
+</body>
+</html>
