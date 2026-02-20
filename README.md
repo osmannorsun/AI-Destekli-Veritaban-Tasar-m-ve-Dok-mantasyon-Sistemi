@@ -1,1 +1,1 @@
-# AI-Destekli-Veritabani Tasarim ve Dokumantasyon Sistemi
+# AI Destekli Veritabani Tasarim ve Dokumantasyon Sistemi
